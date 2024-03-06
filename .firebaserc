@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "ionicangularapp-3f87e": {
+      "hosting": {
+        "app": [
+          "ionicangularapp-3f87e"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "ionicangularapp-3f87e"
+  }
+}
