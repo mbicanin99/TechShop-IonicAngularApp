@@ -1,0 +1,96 @@
+<ion-content [fullscreen]="true" class="custom-content">
+  <div class="header">
+  <h1 class="title">Discover the best <br>
+    tech around you!</h1>
+    <ion-img src="assets/icon/user-photo.png" class="user-img"/>
+  </div>
+
+  <div class="search">
+    <div class="icon">
+    <ion-icon name="search" class="search-icon"></ion-icon>
+    <ion-input type="text" class="search-input" placeholder="Search"></ion-input>
+    </div>
+    <div class="filters">
+      <h1 class="line">|</h1>
+      <ion-icon name="options-outline" class="filter-icon"></ion-icon>
+    </div>
+
+  </div>
+
+  <div class="categories">
+    <h1 style="margin-left: 5%">Categories</h1>
+    <ion-segment scrollable mode="md">
+      <ng-container class="category-container">
+        <ion-segment-button *ngFor="let category of categories" [value]="category.categorie_id" class="category-button"
+                            [ngClass]="{'selected-category': selectedCategory === category.categorie_id}"
+                            (click)="selectCategory(category.categorie_id)">
+          {{ category.name }}
+        </ion-segment-button>
+      </ng-container>
+    </ion-segment>
+
+<!--    <div class="categories">-->
+<!--      <ion-segment scrollable mode="md">-->
+<!--        <ng-container class="category-container">-->
+<!--          <ion-segment-button *ngFor="let product of products" [value]="product.product_id" class="category-button"-->
+<!--                              [ngClass]="{'selected-category': selectedCategory === product.categorie_id}"-->
+<!--                              (click)="  getProductsForCategory(product.product_id)">-->
+<!--            {{ product.name }}-->
+<!--          </ion-segment-button>-->
+<!--        </ng-container>-->
+<!--      </ion-segment>-->
+
+<!--    </div>-->
+  </div>
+
+  <div class="products">
+    <ion-segment scrollable mode="md" style="indicator-height: 0px;">
+      <ng-container class="products-container">
+        <ion-segment-button *ngFor="let product of products">
+        <ion-card class="product-card">
+          <img src="{{product.imgUrl}}" class="image"/>
+          <ion-card-header class="header">
+            <ion-card-title class="product-name">{{product.name}}</ion-card-title>
+            <ion-card-subtitle class="product-color">{{product.color}}</ion-card-subtitle>
+          </ion-card-header>
+
+          <ion-card-content class="product-info">
+            <div class="product-price">${{product.price}}</div>
+            <ion-icon name="add-outline" class="add-product"></ion-icon>
+          </ion-card-content>
+        </ion-card>
+        </ion-segment-button>
+      </ng-container>
+    </ion-segment>
+  </div>
+
+
+
+  <div class="best-sellers">
+    <h1 class="title">Best Sellers</h1>
+    <ion-segment scrollable mode="md" style="indicator-height: 0px;">
+      <ng-container class="best-products-container">
+        <ion-segment-button *ngFor="let product of products">
+          <ion-card class="best-product-card">
+            <div>
+            <img src="{{product.imgUrl}}" class="best-image"/>
+            </div>
+            <div class="best-content">
+            <ion-card-header class="best-header">
+              <ion-card-title class="best-product-name">{{product.name}}</ion-card-title>
+              <ion-card-subtitle class="best-product-color">{{product.color}}</ion-card-subtitle>
+              <div class="best-product-price">${{product.price}}</div>
+            </ion-card-header>
+
+            <ion-card-content class="best-product-info">
+              <ion-icon name="add-outline" class="best-add-product"></ion-icon>
+            </ion-card-content>
+              </div>
+          </ion-card>
+        </ion-segment-button>
+      </ng-container>
+    </ion-segment>
+  </div>
+</ion-content>
+
+<app-footer></app-footer>
