@@ -1,0 +1,26 @@
+<ion-content class="custom-content">
+  <div class="header">
+    <ion-img src="assets/icon/back-arrow.svg" class="back-arrow" routerLink="/home"></ion-img>
+    <h1 class="title">Products categories</h1>
+    <div class="filters">
+      <ion-icon name="funnel-outline" class="filters-icon"/>
+      <ion-text class="filters-text">Filters</ion-text>
+    </div>
+  </div>
+
+  <div class="categories">
+    <h1 class="title">Categories</h1>
+    <div *ngFor="let category of categories" class="buttons" [routerLink]="['/product-list',  category.categorie_id]">
+      <ion-card class="categories-card">
+        <div>
+          <ion-img src="{{category.imgUrl}}" class="category-image"/>
+        </div>
+        <div class="category-content">
+          <ion-title class="category-name">{{category.name}}</ion-title>
+        </div>
+      </ion-card>
+    </div>
+  </div>
+</ion-content>
+
+<app-footer></app-footer>

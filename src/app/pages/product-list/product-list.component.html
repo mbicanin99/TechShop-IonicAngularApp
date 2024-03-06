@@ -1,0 +1,112 @@
+<ion-content class="custom-content">
+  <div class="header">
+    <ion-img src="assets/icon/back-arrow.svg" class="back-arrow" routerLink="/category-list"></ion-img>
+    <h1 class="title">{{categoryId}} Products</h1>
+    <div class="filters">
+      <ion-icon name="funnel-outline" class="filters-icon"/>
+      <ion-text class="filters-text">Filters</ion-text>
+    </div>
+  </div>
+
+  <div class="product-list">
+
+    <div class="category-product-add">
+      <h1 *ngIf="products.length!==0"  class="category-name">{{categoryId}}</h1>
+      <div *ngIf="products.length>0" class="product-content">
+        <ion-icon name="add-outline" (click)="openModal()" class="add-icon"></ion-icon>
+      </div>
+    </div>
+
+
+      <ng-container class="products-container">
+
+        <div *ngIf="products.length===0" class="no-product-content">
+         <div class="no-product-text">There is no products<br> added to this category!</div>
+          <ion-button class="add-product-button" (click)="openModal()">Add product</ion-button>
+        </div>
+
+
+        <ng-container *ngIf="products.length!==0">
+          <div *ngFor="let product of products">
+            <ion-card class="product-card">
+              <div>
+                <img src="{{product.imgUrl}}" class="image"/>
+              </div>
+              <div class="product-information">
+                <ion-card-header class="product-header">
+                  <ion-card-title class="product-name">{{product.name}}</ion-card-title>
+                  <ion-card-subtitle class="product-color">{{product.color}}</ion-card-subtitle>
+                  <div class="product-price">${{product.price}}</div>
+<!--                  <div style="position: absolute; top: 2px; right: 10px">X</div>-->
+                </ion-card-header>
+              </div>
+              <div class="close-update">
+                <div>
+                <ion-icon name="close-outline"  (click)="deleteProduct(product)" class="close-button"></ion-icon>
+                </div>
+                <div class="edit">
+                  <ion-icon name="pencil-outline" (click)=openUpdateModal(product) class="update-button"></ion-icon>
+                </div>
+              </div>
+            </ion-card>
+          </div>
+        </ng-container>
+      </ng-container>
+  </div>
+</ion-content>
+
+<ion-modal [isOpen]="isModalOpen || isModalForUpdateOpen">
+  <ng-template>
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Modal</ion-title>
+        <ion-buttons slot="end">
+          <ion-button (click)="closeModal()">Close</ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="ion-padding">
+      <ion-item>
+        <ion-input *ngIf="isModalOpen" label="Category ID" labelPlacement="floating" placeholder="Catgeory ID"
+          [(ngModel)]="productForCreating.categorie_id" name="categorie_id" type="text" readonly></ion-input>
+        <ion-input *ngIf="isModalForUpdateOpen" label="Category ID" labelPlacement="floating" placeholder="Catgeory ID"
+                   [(ngModel)]="productForUpdate.categorie_id" name="categorie_id" type="text" readonly></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input *ngIf="isModalOpen" label="Color" labelPlacement="floating" placeholder="Color"
+          [(ngModel)]="productForCreating.color" name="color" type="text"></ion-input>
+        <ion-input *ngIf="isModalForUpdateOpen" label="Color" labelPlacement="floating" placeholder="Color"
+                   [(ngModel)]="productForUpdate.color" name="color" type="text"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input *ngIf="isModalOpen" label="Description" labelPlacement="floating" placeholder="Description"
+          [(ngModel)]="productForCreating.description" name="description" type="text"></ion-input>
+        <ion-input *ngIf="isModalForUpdateOpen" label="Description" labelPlacement="floating" placeholder="Description"
+                   [(ngModel)]="productForUpdate.description" name="description" type="text"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input *ngIf="isModalOpen" label="Image URL" labelPlacement="floating" placeholder="Image URL"
+          [(ngModel)]="productForCreating.imgUrl" name="imgUrl" type="text"></ion-input>
+        <ion-input *ngIf="isModalForUpdateOpen" label="Image URL" labelPlacement="floating" placeholder="Image URL"
+                   [(ngModel)]="productForUpdate.imgUrl" name="imgUrl" type="text"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input *ngIf="isModalOpen" label="Name" labelPlacement="floating" placeholder="Name"
+          [(ngModel)]="productForCreating.name" name="name" type="text"></ion-input>
+        <ion-input *ngIf="isModalForUpdateOpen" label="Name" labelPlacement="floating" placeholder="Name"
+                   [(ngModel)]="productForUpdate.name" name="name" type="text"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input *ngIf="isModalOpen"  label="Price" labelPlacement="floating" placeholder="Price"
+          [(ngModel)]="productForCreating.price" name="price" type="number" inputmode="numeric"></ion-input>
+        <ion-input *ngIf="isModalForUpdateOpen"  label="Price" labelPlacement="floating" placeholder="Price"
+                   [(ngModel)]="productForUpdate.price" name="price" type="number" inputmode="numeric"></ion-input>
+      </ion-item>
+
+      <ion-button class="add-button" *ngIf="isModalOpen" (click)="createProduct(productForCreating)">Add product</ion-button>
+      <ion-button class="add-button" *ngIf="isModalForUpdateOpen" (click)="updateProduct(productForUpdate)">Update product</ion-button>
+    </ion-content>
+  </ng-template>
+</ion-modal>
+
+<app-footer></app-footer>
