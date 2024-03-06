@@ -1,0 +1,81 @@
+
+<ion-content class="custom-content" [fullscreen]="true">
+  <div class="content">
+    <div class="header">
+      <ion-icon name="arrow-back-outline" style="font-size: 40px; font-style: inherit" routerLink="/landing"></ion-icon>
+    </div>
+    <div class="body">
+      <ion-text>
+        <h1 style="font-size: 32px;  margin-bottom: 2px; margin-left: 2%;">Hi!</h1>
+        <h3 style="font-size: 21px; color: #ada7a7; margin-top: 0; font-weight: bold; margin-left: 2%" >Create a new account</h3>
+      </ion-text>
+
+      <form class="login-form" [formGroup]="regForm" novalidate>
+        <div class="field">
+          <label class="input-label">Name</label>
+          <ion-item style="--ion-background-color: white">
+            <ion-input class="input-field" formControlName="name"></ion-input>
+          </ion-item>
+          <div *ngIf="this.regForm.controls?.['name'].touched && this.regForm.controls?.['name'].invalid">
+            <ion-text *ngIf="errorControl.name.errors?.required || invalidForm===true" class="error">Name is required!</ion-text>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="input-label">Phone</label>
+          <ion-item style="--ion-background-color: white">
+            <ion-input class="input-field" formControlName="phone"></ion-input>
+          </ion-item>
+          <div *ngIf="this.regForm.controls?.['phone'].touched && this.regForm.controls?.['phone'].invalid">
+            <ion-text *ngIf="errorControl.phone.errors?.required" class="error">Phone is required!</ion-text>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="input-label">Email</label>
+          <ion-item style="--ion-background-color: white">
+            <ion-input class="input-field" formControlName="email"></ion-input>
+          </ion-item>
+          <div *ngIf="this.regForm.controls?.['email'].touched && this.regForm.controls?.['email'].invalid">
+            <ion-text *ngIf="errorControl.email.errors?.required || invalidForm===true" class="error">Email is required!</ion-text>
+            <ion-text *ngIf="errorControl.email.errors?.pattern" class="error">Invalid email format!</ion-text>
+          </div>
+        </div>
+
+
+        <div class="field">
+          <label class="input-label">Password</label>
+          <ion-item class="item">
+            <ion-input class="input-field" formControlName="password" type="password"></ion-input>
+          </ion-item>
+          <div *ngIf="this.regForm.controls?.['password'].touched && this.regForm.controls?.['password'].invalid">
+            <ion-text *ngIf="errorControl.password.errors?.required || invalidForm===true" class="error">Password is required!</ion-text>
+            <ion-text *ngIf="errorControl.password.errors?.pattern" class="error">Invalid password!</ion-text>
+          </div>
+        </div>
+
+        <div style="margin-bottom: 40px">
+          <ion-button class="button" style="--background: #4CA7D9" (click)="submitForm()" ><h3 class="login-text">Registration</h3></ion-button>
+        </div>
+
+      </form>
+
+        <div class="line-with-or">
+          <hr class="line">
+          <p class="or">or</p>
+          <hr class="line">
+        </div>
+
+        <h3 class="text">Social Media Login</h3>
+
+        <div class="social-media">
+          <ion-icon name="logo-twitter" class="logo twitter" (click)="openPage('twitter')"></ion-icon>
+          <ion-icon name="logo-facebook" class="logo facebook" (click)="openPage('facebook')"></ion-icon>
+          <ion-icon name="logo-apple" class="logo apple" (click)="openPage('apple')"></ion-icon>
+
+        </div>
+        <h3 class="text ion-justify-content-start">Already have an account?<span style="margin-left: 5px;"></span><a routerLink="/login" style="color: #3A4AD4; text-decoration: none;"> Sign in</a></h3>
+
+    </div>
+  </div>
+</ion-content>

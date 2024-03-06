@@ -1,0 +1,61 @@
+ion-content.custom-content {
+  --ion-background-color: #ffffff;
+}
+
+.containers {
+  display: flex;
+  flex-direction: column;
+
+  .container {
+    position: relative; //kako bi smo omogucili preklapanje
+    height: 70vh;
+    .landing-img {
+      opacity: 0.8;
+      transform: scaleY(1.75) scaleX(1.47);
+    }
+
+  }
+
+  .container2 {
+    height: 34vh;
+    position: absolute; //za preklapanje
+    bottom: 2px;
+    left: 0;
+    width: 100%;
+    border-radius: 20px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+
+    .title {
+      position: absolute;
+      top: 10px;
+      margin-left: 20px;
+      display: block;
+      width: fit-content;
+    }
+
+    .subtitle{
+      color: #8B8282;
+      font-size: 14px;
+      position: absolute;
+      top: 90px;
+      margin-left: 20px;
+      display: block;
+      width: fit-content;
+    }
+
+    .button{
+      padding-left: 4%;
+      padding-right: 4%;
+      height: 60px;
+      position: absolute; //za preklapanje
+      bottom: 40px;
+      width: 100%;
+    }
+  }
+
+
+
+}
+
