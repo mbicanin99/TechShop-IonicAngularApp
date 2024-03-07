@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+
 import { home } from 'ionicons/icons';
+
 @Component({
   selector: 'app-category-list',
   templateUrl: './category-list.component.html',

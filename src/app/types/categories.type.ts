@@ -1,3 +1,4 @@
+
 export interface CategorieEntity{
     docId?: number,
     categorie_id: number,

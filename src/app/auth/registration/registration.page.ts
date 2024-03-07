@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { LoadingController } from '@ionic/angular';
-import { AutheticationService } from '../../authetication.service';
 import { Router } from '@angular/router';
-import { error } from '@angular/compiler-cli/src/transformers/util';
+
+import { LoadingController } from '@ionic/angular';
+
+import { AutheticationService } from '../../authetication.service';
 
 @Component({
   selector: 'app-registration',
@@ -91,7 +92,7 @@ export class RegistrationPage implements OnInit {
 
   submitForm() {
     this.markFormGroupTouched(this.regForm);
-
+    
     //check form validity
     this.invalidForm = !this.regForm.valid;
 

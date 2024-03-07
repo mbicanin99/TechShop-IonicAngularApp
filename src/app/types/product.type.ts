@@ -1,3 +1,4 @@
+
 export interface ProductEntity {
   id?: number;
   categorie_id: string;

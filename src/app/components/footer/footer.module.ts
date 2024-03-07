@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FooterComponent } from './footer.component';
-import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
+
+import { IonicModule } from '@ionic/angular';
+
+import { FooterComponent } from './footer.component';
 
 @NgModule({
   declarations: [FooterComponent],
